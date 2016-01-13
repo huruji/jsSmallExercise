@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>简易个人日历</title>
+<style >
+    *{
+     margin: 0;
+     padding: 0;
+    }
+     ul{
+     	list-style-type: none;
+     	
+     }   
+	li{
+		width:80px;
+		height: 80px;
+		border:1px #ccc solid;
+		float: left;
+		margin: 10px;
+		background: #d1d1d1;
+		font: 24px;
+        font-weight: bold;
+        line-height: 80px;
+        text-align: center;
+        cursor: pointer;
+	}
+	.rili{
+         width:310px;   
+        border:1px #e6e6e6 solid;
+    	 margin:40px auto;   
+	}
+	#text{
+		clear: both;
+		width:260px;
+		background: #ccc;
+		height:130px;
+		margin-left: 10px;
+		margin-bottom: 10px;
+		padding: 10px;
+	}
+</style>
+<script>
+	var xdata=[
+    "快过年了，大家可以商量着去哪玩吧～",
+	"精通JavaScript开发课程 - 结课标准 - 有十条标准可让大家修练成JS高手……",
+	"妙味茶馆(bbs.miaov.com)，正式开张，它看起来是论坛，其实是个技术驿站，分成了五个版块：视频教程、妙味生活秀、特效兜儿、技术交流、妙味聊吧",
+	"精通各种DOM类应用，熟练掌握面向对象编程思想（OOP）、熟悉JS面向对象开发方式 ",
+	"熟练掌握AJAX技术及相关应用（例如：新浪微博级应用） ",
+	"可以独立写出类似jQuery的小型库（支持各类选择符、事件类、DOM、自定义动画animate、AJAX……",
+	"精通JS运动特效技术，能完整实现各类网站所有动画特效",
+	"掌握JS调试及优化技术、能兼容所有浏览器",
+	"精通JS事件对象及事件的工作机制，并能完成各类跨平台应用模块的开发",
+	"能独立开发表现和性能都很优秀的RIA应用",
+	"了解后台编程的相关知识，能够和后台工程师配合完成大型交互应用",
+	"熟悉正则表达式的编写、应用及高级表单验证技术"
+];
+	window.onload=function(){
+		var xbtn1=document.getElementsByTagName("li");
+		var xtext=document.getElementById("text");
+		for(i=0;i<xbtn1.length;i++){
+		xbtn1[i].index=i;	
+		xbtn1[i].onmouseover=function(){
+			for(i=0;i<xbtn1.length;i++){
+				xtext.innerHTML="none";
+		}
+		xtext.innerHTML="<h2>"+(this.index+1)+"月</h2><p>"+xdata[this.index]+"</p>";
+	}
+	}
+}
+</script>
+</head>
+<body>
+<div class="rili">
+<ul>
+	<li>1月</li>
+	<li>2月</li>
+	<li>3月</li>
+	<li>4月</li>
+	<li>5月</li>
+	<li>6月</li>
+	<li>7月</li>
+	<li>8月</li>
+	<li>9月</li>
+	<li>10月</li>
+	<li>11月</li>
+	<li>12月</li>
+</ul>   
+<div id="text">
+	<h2>1月</h2>
+	<P>快过年了，大家可以商量着去哪玩吧～</P>
+</div>
+</body>
+</html>
