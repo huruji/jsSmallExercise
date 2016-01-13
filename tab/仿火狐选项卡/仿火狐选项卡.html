@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>仿火狐新闻选项卡</title>
+	</head>
+	<style>
+	*{
+		margin: 0;
+		padding:0;
+	}
+	body{
+		margin:50px;
+		background:#ecf0f1;
+	}
+	.news{
+		box-shadow:0 1px 5px #000 ;
+		width:747px;
+	}
+	.news_title ul{
+		list-style-type: none;
+		height:44px;
+	    background: #ccc;
+	}
+	.news_title ul li{
+		width:83px;
+		float:left;
+		text-align: center;
+		cursor:pointer;
+		line-height: 44px;
+	}
+	.news_title ul li:first-child{
+		background:#fff;
+	}
+	.news_info{
+	padding:20px;
+	background: #fff;
+	display: none;
+	overflow: hidden;
+	}
+	img{
+	width:340px;
+	height:202px;
+	}
+	.news_info_img{
+	margin-right:40px;
+	}
+	.news_info_img,.news_info_list{
+	float:left;
+	}
+	.news_info_list ul{
+	list-style-type: square;
+	}
+	.news_info_list ul li {
+	line-height:30px;
+	}
+	a{
+	cursor:pointer;
+	text-decoration: none;
+	color:#000;
+	}
+	a:hover{
+	color:#ff9500;
+	}
+	.news_info_list ul li:first-child{
+	font-weight:bold;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		//获取class为news_title_item的所有元素
+	var xtitle=document.getElementsByClassName("news_title_item");
+	var xinfo=document.getElementsByClassName("news_info");
+		for(i=0;i<xtitle.length;i++){
+			//获取当前操作的元素在数组中的下标
+			xtitle[i].index=i;
+	    //设置mouseover鼠标事件
+			xtitle[i].onmouseover=function(){
+	for(i=0;i<xtitle.length;i++){
+	    //为变量内所有的元素消除原来的属性及其值
+	xinfo[i].style.display="none";
+	xtitle[i].style.backgroundColor="#ccc";
+	};
+	   //重新设置当前操作的元素的属性及其值
+	xinfo[this.index].style.display="block";
+	xtitle[this.index].style.backgroundColor="#fff";
+			}
+		}
+	}
+	</script>
+	<body>
+		<div class="news">
+			<div class="news_title">
+				<ul>
+					<li class="news_title_item">要闻</li>
+					<li class="news_title_item">国内</li>
+					<li class="news_title_item">国际</li>
+					<li class="news_title_item">社会</li>
+					<li class="news_title_item">军事</li>
+					<li class="news_title_item">娱乐</li>
+					<li class="news_title_item">体育</li>
+					<li class="news_title_item">汽车</li>
+					<li class="news_title_item">科技</li>
+				</ul>
+			</div>
+			<div class="news_info_container">
+				<div class="news_info" style="display:block;">
+					<div class="news_info_img">
+						<img src="images/1.jpg" />
+					</div>
+					<div class="news_info_list">
+						<ul>
+							<li><a href="#">要闻要闻要闻要闻要闻要闻要闻要闻要闻</a></li>
+							<li><a href="#">要闻要闻要闻要闻要闻要闻要闻要闻要闻</a></li>
+							<li><a href="#">要闻要闻要闻要闻要闻要闻要闻要闻要闻</a></li>
+							<li><a href="#">要闻要闻要闻要闻要闻要闻要闻要闻要闻</a></li>
+							<li><a href="#">要闻要闻要闻要闻要闻要闻要闻要闻要闻</a></li>
+							<li><a href="#">要闻要闻要闻要闻要闻要闻要闻要闻要闻</a></li>
+							<li><a href="#">要闻要闻要闻要闻要闻要闻要闻要闻要闻</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="news_info">
+					<div class="news_info_img">
+						<img src="images/2.jpg" />
+					</div>
+					<div class="news_info_list">
+						<ul>
+							<li><a href="#">国内国内国内国内国内国内国内国内国内</a></li>
+							<li><a href="#">国内国内国内国内国内国内国内国内国内</a></li>
+							<li><a href="#">国内国内国内国内国内国内国内国内国内</a></li>
+							<li><a href="#">国内国内国内国内国内国内国内国内国内</a></li>
+							<li><a href="#">国内国内国内国内国内国内国内国内国内</a></li>
+							<li><a href="#">国内国内国内国内国内国内国内国内国内</a></li>
+							<li><a href="#">国内国内国内国内国内国内国内国内国内</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="news_info">
+					<div class="news_info_img">
+						<img src="images/3.jpg" />
+					</div>
+					<div class="news_info_list">
+						<ul>
+							<li><a href="#">国际国际国际国际国际国际国际国际国际</a></li>
+							<li><a href="#">国际国际国际国际国际国际国际国际国际</a></li>
+							<li><a href="#">国际国际国际国际国际国际国际国际国际</a></li>
+							<li><a href="#">国际国际国际国际国际国际国际国际国际</a></li>
+							<li><a href="#">国际国际国际国际国际国际国际国际国际</a></li>
+							<li><a href="#">国际国际国际国际国际国际国际国际国际</a></li>
+							<li><a href="#">国际国际国际国际国际国际国际国际国际</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="news_info">
+					<div class="news_info_img">
+						<img src="images/4.jpg" />
+					</div>
+					<div class="news_info_list">
+						<ul>
+							<li><a href="#">社会社会社会社会社会社会社会社会社会</a></li>
+							<li><a href="#">社会社会社会社会社会社会社会社会社会</a></li>
+							<li><a href="#">社会社会社会社会社会社会社会社会社会</a></li>
+							<li><a href="#">社会社会社会社会社会社会社会社会社会</a></li>
+							<li><a href="#">社会社会社会社会社会社会社会社会社会</a></li>
+							<li><a href="#">社会社会社会社会社会社会社会社会社会</a></li>
+							<li><a href="#">社会社会社会社会社会社会社会社会社会</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="news_info">
+					<div class="news_info_img">
+						<img src="images/5.jpg" />
+					</div>
+					<div class="news_info_list">
+						<ul>
+							<li><a href="#">军事军事军事军事军事军事军事军事军事</a></li>
+							<li><a href="#">军事军事军事军事军事军事军事军事军事</a></li>
+							<li><a href="#">军事军事军事军事军事军事军事军事军事</a></li>
+							<li><a href="#">军事军事军事军事军事军事军事军事军事</a></li>
+							<li><a href="#">军事军事军事军事军事军事军事军事军事</a></li>
+							<li><a href="#">军事军事军事军事军事军事军事军事军事</a></li>
+							<li><a href="#">军事军事军事军事军事军事军事军事军事</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="news_info">
+					<div class="news_info_img">
+						<img src="images/6.jpg" />
+					</div>
+					<div class="news_info_list">
+						<ul>
+							<li><a href="#">娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐</a></li>
+							<li><a href="#">娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐</a></li>
+							<li><a href="#">娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐</a></li>
+							<li><a href="#">娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐</a></li>
+							<li><a href="#">娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐</a></li>
+							<li><a href="#">娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐</a></li>
+							<li><a href="#">娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="news_info">
+					<div class="news_info_img">
+						<img src="images/7.jpg" />
+					</div>
+					<div class="news_info_list">
+						<ul>
+							<li><a href="#">体育体育体育体育体育体育体育体育体育</a></li>
+							<li><a href="#">体育体育体育体育体育体育体育体育体育</a></li>
+							<li><a href="#">体育体育体育体育体育体育体育体育体育</a></li>
+							<li><a href="#">体育体育体育体育体育体育体育体育体育</a></li>
+							<li><a href="#">体育体育体育体育体育体育体育体育体育</a></li>
+							<li><a href="#">体育体育体育体育体育体育体育体育体育</a></li>
+							<li><a href="#">体育体育体育体育体育体育体育体育体育</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="news_info">
+					<div class="news_info_img">
+						<img src="images/8.jpg" />
+					</div>
+					<div class="news_info_list">
+						<ul>
+							<li><a href="#">汽车汽车汽车汽车汽车汽车汽车汽车汽车</a></li>
+							<li><a href="#">汽车汽车汽车汽车汽车汽车汽车汽车汽车</a></li>
+							<li><a href="#">汽车汽车汽车汽车汽车汽车汽车汽车汽车</a></li>
+							<li><a href="#">汽车汽车汽车汽车汽车汽车汽车汽车汽车</a></li>
+							<li><a href="#">汽车汽车汽车汽车汽车汽车汽车汽车汽车</a></li>
+							<li><a href="#">汽车汽车汽车汽车汽车汽车汽车汽车汽车</a></li>
+							<li><a href="#">汽车汽车汽车汽车汽车汽车汽车汽车汽车</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="news_info">
+					<div class="news_info_img">
+						<img src="images/9.jpg" />
+					</div>
+					<div class="news_info_list">
+						<ul>
+							<li><a href="#">科技科技科技科技科技科技科技科技科技</a></li>
+							<li><a href="#">科技科技科技科技科技科技科技科技科技</a></li>
+							<li><a href="#">科技科技科技科技科技科技科技科技科技</a></li>
+							<li><a href="#">科技科技科技科技科技科技科技科技科技</a></li>
+							<li><a href="#">科技科技科技科技科技科技科技科技科技</a></li>
+							<li><a href="#">科技科技科技科技科技科技科技科技科技</a></li>
+							<li><a href="#">科技科技科技科技科技科技科技科技科技</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
