@@ -1,0 +1,52 @@
+﻿@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2015-12-30 06:43:38
+ * @version $Id$
+ */
+ body div{
+ 	margin:0 ;
+ 	padding:0;
+ }
+ .container{
+ 	margin: 0 auto;
+ 	margin-top: 10px;
+ 	width:360px;
+ 	overflow: hidden;
+ }
+ h1{
+ 	text-align:center;
+ }
+ .srceen{
+ 	margin:8px;
+ }
+ .srceen input{
+   width:340px;
+   height:50px;
+   font-size:40px;
+   font-weight: bold;
+   text-align: right;
+   padding-top:2px;
+ }
+ .input_btn{
+ 	overflow:hidden;
+ 	width:400px;
+
+ }
+.btn{
+	width:70px;
+	height: 70px;
+	background: #15A05c;
+	font-size:24px;
+	font-weight:bold;	
+	border:2px solid #000;
+	float:left;
+	margin:8px;
+	line-height: 70px;
+	text-align:center;
+}
+.btn:hover{
+	background-color:#c2dbf5;
+        cursor:pointer;
+}
