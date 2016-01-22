@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>回到顶部</title>
+		<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.backtop{
+				position: fixed;
+				bottom:20px;
+				right:10px;
+				border:1px solid #000;
+				height:49px;
+				width:49px;
+				background:url(images/top.png) no-repeat;
+				cursor:pointer;
+				display: none;
+			}
+		.backtop:hover{
+			background-position:0 -57px;
+		}
+		</style>
+		<script>
+			window.onload=function(){
+				var bSys=true;
+			    var timer=null;
+			    var topbtn=document.getElementsByClassName("backtop")[0];
+			    /*设置定时器*/
+			    topbtn.addEventListener("click", backtop,false);
+
+			    /*回到顶部函数*/
+			    function backtop(){
+					timer=setInterval(function(){
+						var topheight=document.documentElement.scrollTop||document.body.scrollTop;
+		                var speed=Math.floor(-topheight/4);
+		                document.documentElement.scrollTop=document.body.scrollTop=topheight+speed;
+		                if(topheight==0){
+			            clearInterval(timer);
+		            }
+		           bSys=true;
+		            }, 30)
+				};
+				
+            /*显示按钮函数*/
+			window.onscroll=function ()
+			{
+				var topheight=document.documentElement.scrollTop||document.body.scrollTop;
+				if(bSys==false)
+				{
+					clearInterval(timer);
+				}
+				bSys=false;
+				if(topheight>=100){	
+					topbtn.style.display="block";
+				}else{
+					topbtn.style.display="none";
+				}
+			}
+	
+			}
+		</script>
+		</style>
+	</head>
+	<body>
+		<img src="images/content.png" />
+		<div class="backtop">
+		</div>
+	</body>
+</html>
