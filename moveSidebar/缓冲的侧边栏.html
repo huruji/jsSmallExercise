@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>缓冲运动的侧边栏</title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+.sidebar{
+	width:150px;
+	height:200px;
+	background: url(sidebar.jpg);
+	position:absolute;
+	right:0;
+	background-size: 150px 200px;
+}
+body{
+	height:4000px;
+}
+</style>
+</head>
+<body>
+<div class="sidebar">
+</div> 
+<script>
+    var timer=null;
+    var oside=document.getElementsByClassName("sidebar")[0];
+    oside.style.top=(document.documentElement.clientHeight-oside.offsetHeight)/2+"px";
+window.onscroll=function(){
+    var scrolltop=document.documentElement.scrollTop||document.body.scrollTop;
+    t=scrolltop+(document.documentElement.clientHeight-oside.offsetHeight)/2;
+   startmove(parseInt(t));
+}
+function startmove(itarget){
+	clearInterval(timer);
+	timer=setInterval(function(){
+	    ispeed=(itarget-oside.offsetTop)/100;
+	    if(itarget>oside.offsetTop){
+	    	ispeed=Math.ceil(ispeed);
+	    }else{
+	    	ispeed=Math.floor(ispeed);
+	    }
+		if(oside.offsetTop==itarget){
+			clearInterval(timer);
+		}else{
+			oside.style.top=oside.offsetTop+ispeed+"px";
+		}
+	},30)
+}
+
+</script>
+</body>
+</html>
