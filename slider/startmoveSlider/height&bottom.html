@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>height and bottom</title>
+		<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.piccontent{
+			margin:0 auto;
+			width: 960px;
+			background-color: #ccc;
+			overflow: hidden;
+		}
+		ul{
+			list-style-type: none;
+		}
+		.bigpic{
+			height: 540px;
+		}
+		.bigpic,.smallpic{
+			position: relative;
+			overflow: hidden;
+		}
+		.bigpic ul li{
+			position:absolute;
+			z-index:0;
+			overflow: hidden;
+			bottom:0;
+		}
+		.bigpic li img{
+			width:960px;
+			height:540px;
+		}
+		.smallpic{
+			padding:12px;
+			overflow: hidden;
+			width:1434px;
+			height: 120px;
+		}
+		.smallpic img{
+			width:225px;
+			height: 120px;
+		}
+		.smallpic ul{
+			position: absolute;
+			left: 12px;
+		}
+		.smallpic li{
+			opacity: 0.4;
+			filter:alpha(opacity:40);
+			float:left;
+			padding-right:12px;
+			width:225px;
+		}
+		#left_arrow{
+			background:url(images/left.png) no-repeat;
+			background-position: center;
+			width:80px;
+			position: absolute;
+			left: 0;
+			height:100%;
+			opacity: 0;
+			filter:alpha(opacity:0);
+			z-index: 30000;
+			cursor: pointer;
+		}
+		#right_arrow{
+			background:url(images/right.png) no-repeat;
+			background-position: center;
+			width:80px;
+			position: absolute;
+			right: 0;
+			height:100%;
+			opacity: 0;
+			z-index: 30000;
+			cursor: pointer;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="piccontent">
+			<div class="bigpic">
+				<ul>
+					<li style="z-index:1"><img src="images/1.jpg" /></li>
+					<li><img src="images/2.jpg" /></li>
+					<li><img src="images/3.jpg" /></li>
+					<li><img src="images/4.jpg" /></li>
+					<li><img src="images/5.jpg" /></li>
+					<li><img src="images/6.jpg" /></li>
+				</ul>
+				<span id="left_arrow"></span>
+				<span id="right_arrow"></span>
+			</div>
+			<div class="smallpic">
+				<ul>
+					<li><img src="images/1.jpg" /></li>
+					<li><img src="images/2.jpg" /></li>
+					<li><img src="images/3.jpg" /></li>
+					<li><img src="images/4.jpg" /></li>
+					<li><img src="images/5.jpg" /></li>
+					<li><img src="images/6.jpg" /></li>
+				</ul>
+			</div>
+		</div>
+		<script>
+		var big_pic=document.getElementsByClassName("bigpic")[0];
+        var big_pic_ul=big_pic.getElementsByTagName("ul")[0];
+		var big_pic_li=big_pic.getElementsByTagName("li");
+		var rightArrow=document.getElementById("right_arrow");
+		var leftArrow=document.getElementById("left_arrow");
+		var small_pic_li=document.getElementsByClassName("smallpic")[0].getElementsByTagName("li");
+		var small_pic_ul=document.getElementsByClassName("smallpic")[0].getElementsByTagName("ul")[0];
+		var inow=0;
+		var minZindex=2;
+		big_pic_li[0].style.zIndex=1;
+		small_pic_li[0].style.cssText="filter:alpha(opacity:100);opacity:1;"
+   		/*箭头出现与消失的函数*/
+		rightArrow.onmouseover=function(){
+			startmove(rightArrow,"opacity",100);
+		}
+		rightArrow.onmouseout=function(){
+			startmove(rightArrow,"opacity",0);
+		}
+		leftArrow.onmouseover=function(){
+			startmove(leftArrow,"opacity",100);
+		}
+		leftArrow.onmouseout=function(){
+			startmove(leftArrow,"opacity",0);
+		}
+        /*显示上一张图片*/
+		leftArrow.onclick=function(){
+            if(inow==0){
+            	inow=small_pic_li.length;
+            }
+            inow--;
+            tab();
+		}
+		/*显示下一张图片*/
+		rightArrow.onclick=function(){
+			inow++;
+            if(inow==small_pic_li.length){
+            	inow=0;
+            }
+            tab();
+		}
+		/*小图显示大图函数*/
+        for(var i=0;i<small_pic_li.length;i++){
+        	small_pic_li[i].index=i;
+        	small_pic_li[i].onmouseover=function(){
+        		startmove(this,"opacity",100)
+        	}
+        	small_pic_li[i].onmouseout=function(){
+        		if(this.index!=inow){
+        		startmove(this,"opacity",40)}
+        	}
+        	small_pic_li[i].onclick=function(){
+        		if(inow==this.index){
+        			return;
+        		}
+        		inow=this.index;
+        		tab();
+        	}
+        }
+        setInterval(function(){
+        	inow++;
+        	tab();
+        	if(inow==small_pic_li.length-1){
+        		inow=-1;
+        	}
+        }, 2500)
+        function tab(){
+        	for(var i=0;i<small_pic_li.length;i++){
+        			startmove(small_pic_li[i],"opacity",40);
+        		}
+        		startmove(small_pic_li[inow],"opacity",100);
+        		big_pic_li[inow].style.zIndex=minZindex++;
+        		big_pic_li[inow].style.height=0;
+        		startmove(big_pic_li[inow],"height",big_pic.offsetHeight);
+               /*small_pic_ul.style.left=-(parseInt(this.index)*parseInt(getstyle(small_pic_li[this.index],"width")));*/
+/*                var owidth1=parseInt(getstyle(small_pic_li[0],"width"));
+                var owidth2=small_pic_li[0].offsetWidth;
+                var owidth3=-((inow-2)*owidth2+owidth1);*/
+                var moveLeft=-((inow-2)*small_pic_li[0].offsetWidth+parseInt(getstyle(small_pic_li[0],"width")));
+                if(inow==0){
+                	startmove(small_pic_ul,"left",12);
+                }else if(inow>=small_pic_li.length-2){
+                	var moveleft_last=-((small_pic_li.length-5)*small_pic_li[0].offsetWidth+parseInt(getstyle(small_pic_li[0],"width")))
+                    startmove(small_pic_ul,"left",moveleft_last);
+                }
+                else {
+                	/*small_pic_ul.style.left=-((inow-5)*small_pic_li[0].offsetWidth+parseInt(getstyle(small_pic_li[0],"width")))+"px";*/
+                	/*moveleft2=-((inow-5)*small_pic_li[0].offsetWidth+parseInt(getstyle(small_pic_li[0],"width")))*/
+                	startmove(small_pic_ul,"left",moveLeft);
+                }
+        }
+		/*由父级元素获取含有class的子元素*/
+        function getclass(oParent,oClass){
+        	var aele=oParent.getElementsByTagName("*");
+        	var aresult=[];
+            for(var i=0;i<aele.length;i++){
+            	if(aele[i].className==oClass){
+            		aresult.push(aele[i]);
+            	}
+            }
+            return aresult;
+        }
+
+		function getstyle(ele,attr){
+		if (ele.currentStyle){
+		return ele.currentStyle[attr];//兼容IE6-8
+		}else{
+		return getComputedStyle(ele,false)[attr];
+		}
+		}
+		/*缓冲运动函数*/
+		function startmove(ele,attr,itarget){
+		clearInterval(ele.timer);
+		ele.timer=setInterval(function(){
+		if(attr=="opacity"){
+		var cur=parseInt(parseFloat(getstyle(ele,attr))*100);
+		}
+		else{
+		var cur=parseInt(getstyle(ele,attr));//parseInt将getstyle的东西转换为整数，并将单位忽略
+		}
+		var ispeed=(itarget-cur)/17;
+		if(ispeed>0){
+		ispeed=Math.ceil(ispeed);
+		}else{
+		ispeed=Math.floor(ispeed);//解决当cur大于itarget时的问题
+		}
+		if(cur==itarget){
+		clearInterval(ele.timer);
+		}else{
+		if(attr=="opacity"){
+			ele.style[attr]=(cur+ispeed)/100;
+			ele.style.filter="alpha(opacity:"+cur+ispeed+")";
+		}else{
+			ele.style[attr]=cur+ispeed+"px";
+		}
+		}
+		}, 30)
+		}
+		</script>
+	</body>
+</html>
