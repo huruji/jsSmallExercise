@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>编写ajax</title>
+
+</head>
+<body>
+<input type="button" value="点击"?/>
+<script>
+var btn=document.getElementsByTagName("input")[0];
+btn.onclick=function(){
+	//创建ajax对象
+	var ajax=new XMLHttpRequest()||new ActiveXObject("Microsoft.XMLHTTP");
+	//连接服务器
+	//open(方法,url,是否异步)
+	ajax.open("GET","page1.txt",true);
+	//发送请求
+	ajax.send();
+	//接收返回响应
+	ajax.onreadystatechange=function(){
+		if(ajax.readyState==4)
+		{
+			if(ajax.status==200){
+				alert("成功"+ajax.responseText);
+			}
+		}
+	}
+}
+</script>
+</body>
+</html>

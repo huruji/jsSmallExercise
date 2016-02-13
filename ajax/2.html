@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>用ajax实现向网页中添加内容</title>
+<script src="ajax.js" type="text/javascript" charset="utf-8" ></script>
+<style>
+div{
+	width:960px;
+	height: 500px;
+	margin:0 auto;
+	background:#ccc;
+}
+</style>
+</head>
+<body>
+<div>
+</div>
+<input type="button" value="刷新数据"/>
+<script>
+var btn=document.getElementsByTagName("input")[0];
+var odiv=document.getElementsByTagName("div")[0];
+btn.onclick=function(){
+	ajax("aaa.txt",function(str){
+		odiv.innerHTML=str;
+	})
+}
+</script>
+</body>
+</html>

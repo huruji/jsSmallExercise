@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>封装ajax</title>
+<script>
+function ajax(url,fn,fnfailed){
+	//创建ajax对象
+	var ajax=new XMLHttpRequest()||new ActiveXObject("Microsoft.XMLHTTP");
+	//连接服务器
+	//open(方法,url,是否异步)
+	ajax.open("GET",url,true);
+	//发送请求
+	ajax.send();
+	//接收返回响应
+	ajax.onreadystatechange=function(){
+		if(ajax.readyState==4)
+		{
+			if(ajax.status==200){
+				fn(ajax.responseText);
+			}
+			else{
+				if(fnfailed){
+					fnfailed();
+				}
+			}
+		}
+	}
+}
+</script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>ajax读取数组</title>
+<script src="ajax.js" type="text/javascript" charset="utf-8" ></script>
+</head>
+<body>
+<input type="button" value="读取数组"/>
+<script>
+var btn=document.getElementsByTagName("input")[0];
+btn.onclick=function(){
+	ajax("data.txt",function(str){
+		var arr=eval(str);
+		for(var i=0;i<arr.length;i++){
+			alert(arr[i]);
+		}
+	})
+}
+</script>
+</body>
+</html>

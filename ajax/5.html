@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>用ajax读取alert</title>
+<script src="ajax.js" type="text/javascript" charset="utf-8" ></script>
+</head>
+<body>
+<input type="button" value="点击读取"/>
+<script>
+var btn=document.getElementsByTagName("input")[0];
+btn.onclick=function(){
+	ajax("alert.txt",function(str){
+		eval(str);
+	})
+}
+</script>   
+</body>
+</html>

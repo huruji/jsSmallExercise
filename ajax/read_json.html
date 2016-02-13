@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>用ajax读取json</title>
+<script src="ajax.js" type="text/javascript" charset="utf-8" ></script>
+</head>
+<body>
+<input type="button" value="读取json"/>
+<script>
+var btn=document.getElementsByTagName("input")[0];
+btn.onclick=function(){
+	ajax("data.json",function(str){
+		str=eval(str);
+		alert(str[0].a);
+	})
+}
+</script>   
+</body>
+</html>
